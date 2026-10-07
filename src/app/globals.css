@@ -318,15 +318,140 @@
 }
 
 .section-gap {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 @media (min-width: 768px) {
   .section-gap {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-gap {
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
+}
+
+/* ═══════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE GRIDS
+═══════════════════════════════════════ */
+
+/* 1-col on mobile → 2-col on tablet → auto on desktop */
+.grid-concerns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .grid-concerns { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+}
+@media (min-width: 1024px) {
+  .grid-concerns { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+}
+
+/* Clinic locations: 1-col mobile → 2-col desktop */
+.grid-locations {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .grid-locations { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+}
+
+/* 4-col trust cards: 1-col → 2-col → 4-col */
+.grid-trust-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .grid-trust-4 { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+}
+@media (min-width: 1280px) {
+  .grid-trust-4 { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+}
+
+/* Consultation steps: 1-col → 2-col → 4-col */
+.grid-steps-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+}
+@media (min-width: 768px) {
+  .grid-steps-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1280px) {
+  .grid-steps-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Facts/stats: 1-col mobile → 3-col desktop */
+.grid-facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+@media (min-width: 480px) {
+  .grid-facts { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+}
+
+/* Clinic mini-cards in hero: always 1-col on mobile */
+.grid-clinic-mini {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 480px) {
+  .grid-clinic-mini { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Mobile button stack */
+.btn-group-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+@media (min-width: 480px) {
+  .btn-group-mobile {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: auto;
+  }
+}
+
+/* Center btn-group on mobile for CTA section */
+.btn-group-center {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+@media (min-width: 480px) {
+  .btn-group-center {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Full-width buttons on mobile */
+.btn-full-mobile {
+  width: 100%;
+  justify-content: center;
+}
+@media (min-width: 480px) {
+  .btn-full-mobile { width: auto; }
 }
 
 /* ═══════════════════════════════════════
@@ -675,12 +800,27 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-@media (max-width: 1023px) {
+/* step-card borders adapt to layout */
+@media (max-width: 767px) {
   .step-card {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
-  .step-card:last-child {
+  .step-card:last-child { border-bottom: none; }
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  /* 2-col layout: remove right border on even cols */
+  .step-card:nth-child(2n) { border-right: none; }
+  .step-card:nth-last-child(-n+2) { border-bottom: none; }
+  .step-card {
+    border-right: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+}
+@media (min-width: 1280px) {
+  .step-card {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: none;
   }
+  .step-card:last-child { border-right: none; }
 }

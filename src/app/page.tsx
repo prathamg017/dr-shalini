@@ -56,7 +56,7 @@ function HeroSection() {
       <div className="container-xl" style={{ position: "relative", zIndex: 1 }}>
         <div className="hero-grid">
           {/* Left Column: Doctor Identity & Clear Next Actions */}
-          <div style={{ maxWidth: "620px" }}>
+          <div>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "1.75rem" }}>
               <span
                 style={{
@@ -119,23 +119,14 @@ function HeroSection() {
               A thoughtful homoeopathic consultation starts by understanding you — your story, your symptoms, and your individual health context. Consult with Dr. Shalini Jain at two accessible clinics in Indore.
             </p>
 
-            {/* Clear Action Hierarchy: Request Consultation -> WhatsApp -> Helpline */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                gap: "14px",
-                marginBottom: "3rem",
-              }}
-            >
-              <Link href="/consultation" className="btn-primary">
+            <div className="btn-group-mobile" style={{ marginBottom: "3rem" }}>
+              <Link href="/consultation" className="btn-primary btn-full-mobile">
                 Request a Consultation
                 <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <a href={waUrl} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
+              <a href={waUrl} target="_blank" rel="noopener noreferrer" className="btn-whatsapp btn-full-mobile">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
                 </svg>
@@ -143,7 +134,7 @@ function HeroSection() {
               </a>
               <a
                 href={`tel:${PRIMARY_CONTACT.phoneRaw}`}
-                className="btn-ghost"
+                className="btn-ghost btn-full-mobile"
                 title="Call clinic helpline"
               >
                 <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -155,13 +146,8 @@ function HeroSection() {
 
             {/* Quick Indore Neighborhood Context Strip */}
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                gap: "12px",
-                paddingTop: "2rem",
-                borderTop: "1px solid var(--border)",
-              }}
+              className="grid-clinic-mini"
+              style={{ paddingTop: "2rem", borderTop: "1px solid var(--border)" }}
             >
               {CLINIC_LOCATIONS.map((loc) => (
                 <Link
@@ -425,17 +411,7 @@ function HumanTrustSection() {
         </div>
 
         {/* 4 Steps Flow */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: "0",
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: "24px",
-            overflow: "hidden",
-            background: "rgba(255,255,255,0.02)",
-          }}
-        >
+        <div className="grid-steps-4">
           {steps.map((st) => (
             <div key={st.num} className="step-card">
               <div
@@ -613,10 +589,8 @@ function MeetDoctorSection() {
 
             {/* Factual Information & Transparency Notes */}
             <div
+              className="grid-facts"
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-                gap: "12px",
                 padding: "1.5rem",
                 background: "var(--ivory-50)",
                 borderRadius: "16px",
@@ -650,11 +624,11 @@ function MeetDoctorSection() {
               </div>
             </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "16px" }}>
-              <Link href="/about" className="btn-primary">
+            <div className="btn-group-mobile">
+              <Link href="/about" className="btn-primary btn-full-mobile">
                 Read Dr. Shalini&apos;s Profile
               </Link>
-              <Link href="/consultation" className="btn-ghost">
+              <Link href="/consultation" className="btn-ghost btn-full-mobile">
                 Schedule a Visit
               </Link>
             </div>
@@ -737,13 +711,7 @@ function ClinicalExcellenceSection() {
         </div>
 
         {/* 4 Architectural Trust Columns */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "1.5rem",
-          }}
-        >
+        <div className="grid-trust-4">
           {standards.map((st) => (
             <div
               key={st.num}
@@ -885,13 +853,7 @@ function ConcernsSection() {
         </div>
 
         {/* 9 Consultation Areas */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "1.25rem",
-          }}
-        >
+        <div className="grid-concerns">
           {concerns.map((c) => (
             <Link
               key={c.id}
@@ -999,13 +961,7 @@ function LocationsSection() {
           </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "2rem",
-          }}
-        >
+        <div className="grid-locations">
           {CLINIC_LOCATIONS.map((loc, i) => (
             <div
               key={loc.id}
@@ -1300,18 +1256,10 @@ function FinalConversionSection() {
               Contact the clinic by WhatsApp, telephone call, or online booking request. We coordinate your slot at your preferred Indore clinic promptly.
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "14px",
-              }}
-            >
+            <div className="btn-group-center">
               <Link
                 href="/consultation"
-                className="btn-brass"
+                className="btn-brass btn-full-mobile"
                 style={{ fontSize: "0.875rem", padding: "1rem 2rem" }}
               >
                 Request a Consultation
@@ -1323,16 +1271,18 @@ function FinalConversionSection() {
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-whatsapp"
+                className="btn-whatsapp btn-full-mobile"
                 style={{ fontSize: "0.875rem", padding: "1rem 2rem" }}
               >
                 Continue on WhatsApp
               </a>
               <a
                 href={`tel:${PRIMARY_CONTACT.phoneRaw}`}
+                className="hover-footer-social btn-full-mobile"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
+                  justifyContent: "center",
                   gap: "6px",
                   padding: "0.95rem 1.75rem",
                   borderRadius: "100px",
@@ -1343,7 +1293,6 @@ function FinalConversionSection() {
                   textDecoration: "none",
                   transition: "all 0.2s ease",
                 }}
-                className="hover-footer-social"
               >
                 <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
